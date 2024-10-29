@@ -3,8 +3,9 @@ package ventana;
 public class principal {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		primeraVentanaCodigo pvc = new primeraVentanaCodigo();
+		
 	}
 
 }
