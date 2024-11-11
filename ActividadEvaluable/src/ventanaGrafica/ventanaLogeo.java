@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.ImageIcon;
 
 public class ventanaLogeo extends JFrame {
 
@@ -97,7 +98,8 @@ public class ventanaLogeo extends JFrame {
 		contentPane.add(btnNewButton_1_1);
 		
 		JButton btnNewButton_2 = new JButton("");
-		btnNewButton_2.setBounds(426, 42, 172, 202);
+		btnNewButton_2.setIcon(new ImageIcon(ventanaLogeo.class.getResource("/imagenes/bwhsLDu0_200x200.png")));
+		btnNewButton_2.setBounds(447, 89, 132, 129);
 		contentPane.add(btnNewButton_2);
 	}
 }
