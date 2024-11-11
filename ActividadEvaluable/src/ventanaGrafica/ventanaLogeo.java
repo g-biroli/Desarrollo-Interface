@@ -85,5 +85,19 @@ public class ventanaLogeo extends JFrame {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(176, 160, 151, 19);
 		contentPane.add(passwordField);
+		
+		JButton btnNewButton_1 = new JButton("ENTRAR");
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNewButton_1.setBounds(411, 284, 94, 33);
+		contentPane.add(btnNewButton_1);
+		
+		JButton btnNewButton_1_1 = new JButton("SALIR");
+		btnNewButton_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNewButton_1_1.setBounds(529, 284, 94, 33);
+		contentPane.add(btnNewButton_1_1);
+		
+		JButton btnNewButton_2 = new JButton("");
+		btnNewButton_2.setBounds(426, 42, 172, 202);
+		contentPane.add(btnNewButton_2);
 	}
 }
