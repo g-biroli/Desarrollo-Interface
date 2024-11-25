@@ -73,10 +73,10 @@ public class ventanaLogeo extends JFrame {
 		comboBox.addItem("Profesor");
 		contentPane.add(comboBox);
 		
-		JButton btnNewButton = new JButton("LIMPIAR");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton.setBounds(190, 296, 127, 21);
-		contentPane.add(btnNewButton);
+		JButton btnLimpiar = new JButton("LIMPIAR");
+		btnLimpiar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnLimpiar.setBounds(190, 296, 127, 21);
+		contentPane.add(btnLimpiar);
 		
 		textField = new JTextField();
 		textField.setBounds(176, 74, 151, 19);
@@ -87,19 +87,19 @@ public class ventanaLogeo extends JFrame {
 		passwordField.setBounds(176, 160, 151, 19);
 		contentPane.add(passwordField);
 		
-		JButton btnNewButton_1 = new JButton("ENTRAR");
-		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton_1.setBounds(411, 284, 94, 33);
-		contentPane.add(btnNewButton_1);
+		JButton btnEntrar = new JButton("ENTRAR");
+		btnEntrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnEntrar.setBounds(411, 284, 94, 33);
+		contentPane.add(btnEntrar);
 		
-		JButton btnNewButton_1_1 = new JButton("SALIR");
-		btnNewButton_1_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnNewButton_1_1.setBounds(529, 284, 94, 33);
-		contentPane.add(btnNewButton_1_1);
+		JButton btnSalir = new JButton("SALIR");
+		btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnSalir.setBounds(529, 284, 94, 33);
+		contentPane.add(btnSalir);
 		
-		JButton btnNewButton_2 = new JButton("");
-		btnNewButton_2.setIcon(new ImageIcon(ventanaLogeo.class.getResource("/imagenes/bwhsLDu0_200x200.png")));
-		btnNewButton_2.setBounds(447, 89, 132, 129);
-		contentPane.add(btnNewButton_2);
+		JButton ImagemUniversidadEuropea = new JButton("");
+		ImagemUniversidadEuropea.setIcon(new ImageIcon(ventanaLogeo.class.getResource("/imagenes/bwhsLDu0_200x200.png")));
+		ImagemUniversidadEuropea.setBounds(447, 89, 132, 129);
+		contentPane.add(ImagemUniversidadEuropea);
 	}
 }
