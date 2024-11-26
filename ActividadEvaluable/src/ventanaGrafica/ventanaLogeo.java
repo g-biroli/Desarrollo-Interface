@@ -1,26 +1,34 @@
 package ventanaGrafica;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.BoxLayout;
+
 import javax.swing.JLabel;
-import java.awt.GridLayout;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
-public class ventanaLogeo extends JFrame {
+public class ventanaLogeo extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField tfUsuario;
 	private JPasswordField passwordField;
+	private JButton btnSalir;
+	private JButton btnEntrar;
+	private String usuario = "Gabriel";
+	private String pass="1234";
+	
+	
 
 	/**
 	 * Launch the application.
@@ -50,10 +58,10 @@ public class ventanaLogeo extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("USUARIO");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblNewLabel.setBounds(42, 65, 88, 33);
-		contentPane.add(lblNewLabel);
+		JLabel lblUsuario = new JLabel("USUARIO");
+		lblUsuario.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblUsuario.setBounds(42, 65, 88, 33);
+		contentPane.add(lblUsuario);
 		
 		JLabel lblContrasea = new JLabel("CONTRASEÑA");
 		lblContrasea.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -78,21 +86,24 @@ public class ventanaLogeo extends JFrame {
 		btnLimpiar.setBounds(190, 296, 127, 21);
 		contentPane.add(btnLimpiar);
 		
-		textField = new JTextField();
-		textField.setBounds(176, 74, 151, 19);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		tfUsuario = new JTextField();
+		tfUsuario.setToolTipText("Introduza el usuario");
+		tfUsuario.setBounds(176, 74, 151, 19);
+		contentPane.add(tfUsuario);
+		tfUsuario.setColumns(10);
 		
 		passwordField = new JPasswordField();
 		passwordField.setBounds(176, 160, 151, 19);
 		contentPane.add(passwordField);
 		
-		JButton btnEntrar = new JButton("ENTRAR");
+		btnEntrar = new JButton("ENTRAR");
+		btnEntrar.addActionListener(this);
 		btnEntrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnEntrar.setBounds(411, 284, 94, 33);
 		contentPane.add(btnEntrar);
 		
-		JButton btnSalir = new JButton("SALIR");
+		btnSalir = new JButton("SALIR");
+		btnSalir.addActionListener(this);
 		btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnSalir.setBounds(529, 284, 94, 33);
 		contentPane.add(btnSalir);
@@ -101,5 +112,39 @@ public class ventanaLogeo extends JFrame {
 		ImagemUniversidadEuropea.setIcon(new ImageIcon(ventanaLogeo.class.getResource("/imagenes/bwhsLDu0_200x200.png")));
 		ImagemUniversidadEuropea.setBounds(447, 89, 132, 129);
 		contentPane.add(ImagemUniversidadEuropea);
+	}
+		protected JTextField getTfUsuario() {
+			return tfUsuario;
+		}
+			protected JButton getBtnSalir() {
+			return btnSalir;
+		}
+			protected JButton getBtnEntrar() {
+			return btnEntrar;
+		}
+			protected JPasswordField getPasswordField() {
+			return passwordField;
+		} 
+	
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			Object ob = e.getSource();
+			if(ob.equals(btnSalir)) {
+				System.exit(EXIT_ON_CLOSE);
+			}
+			if(ob.equals(btnEntrar)) {
+				if(tfUsuario.getText().equals("") || passwordField.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Valores vacios");
+				}
+				else {
+					if(tfUsuario.getText().equals(usuario) && passwordField.getText().equals(pass)) {
+						JOptionPane.showMessageDialog(null, "Bienvenido a la aplicación");
+						tfUsuario.setText("");
+						passwordField.setText("");
+				} else {
+					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+	            }
+			}
+		}
 	}
 }
