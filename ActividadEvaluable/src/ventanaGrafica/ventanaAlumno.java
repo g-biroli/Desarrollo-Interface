@@ -36,7 +36,7 @@ public class ventanaAlumno extends JFrame {
 	public ventanaAlumno() {
 		setTitle("Ventana Alumno");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(600, 400);
+        setSize(768, 479);
         setLocationRelativeTo(null);
 
         JPanel panel = new JPanel();

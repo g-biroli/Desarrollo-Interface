@@ -1,90 +1,105 @@
 package ventanaGrafica;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.JCheckBox;
-import java.awt.Font;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ventanaProfesor extends JFrame {
+    private JTable tablaNotas;
+    private DefaultTableModel modelo;
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+    public ventanaProfesor() {
+        setTitle("Gestión de Notas - Profesor");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(809, 549);
+        setLocationRelativeTo(null);
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ventanaProfesor frame = new ventanaProfesor();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+        // tabla con alumno y su nota
+        modelo = new DefaultTableModel();
+        modelo.addColumn("Alumno");
+        modelo.addColumn("Nota");
 
-	/**
-	 * Create the frame.
-	 */
-	public ventanaProfesor() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 840, 553);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        // Ejemplo de alumno
+        modelo.addRow(new Object[]{"Maria", ""});
+        modelo.addRow(new Object[]{"Carlos", ""});
+        modelo.addRow(new Object[]{"Fernanda", ""});
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JPanel panel = new JPanel();
-		panel.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel.setBounds(29, 211, 243, 140);
-		contentPane.add(panel);
-		panel.setLayout(null);
-		
-		JCheckBox chckbPrimero = new JCheckBox("Primero");
-		chckbPrimero.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		chckbPrimero.setBounds(51, 28, 127, 37);
-		panel.add(chckbPrimero);
-		
-		JCheckBox chckbSegundo = new JCheckBox("Segundo");
-		chckbSegundo.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		chckbSegundo.setBounds(51, 80, 127, 37);
-		panel.add(chckbSegundo);
-		
-		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
-		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(289, 211, 222, 176);
-		contentPane.add(panel_1);
-		
-		JCheckBox chckbInformatica = new JCheckBox("Informatica");
-		chckbInformatica.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		chckbInformatica.setBounds(51, 19, 146, 37);
-		panel_1.add(chckbInformatica);
-		
-		JCheckBox chckbDependencia = new JCheckBox("Dependencia");
-		chckbDependencia.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		chckbDependencia.setBounds(51, 69, 165, 37);
-		panel_1.add(chckbDependencia);
-		
-		JCheckBox chckbEnfermaria = new JCheckBox("Enfermaria");
-		chckbEnfermaria.setFont(new Font("Tahoma", Font.PLAIN, 23));
-		chckbEnfermaria.setBounds(51, 118, 146, 37);
-		panel_1.add(chckbEnfermaria);
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(530, 40, 286, 347);
-		contentPane.add(scrollPane);
-	}
+        tablaNotas = new JTable(modelo);
+        JScrollPane scrollPane = new JScrollPane(tablaNotas);
+        scrollPane.setBounds(209, 202, 586, 288);
+        
+        
+        // Boton para tomar nota
+        JButton btnGuardar = new JButton("Tomar Notas");
+        btnGuardar.setBounds(209, 491, 586, 21);
+        btnGuardar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tomarNotas();
+            }
+        });
+        
+        
+
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.add(scrollPane);
+        panel.add(btnGuardar);
+
+        getContentPane().add(panel);
+        
+        JLabel lblNewLabel = new JLabel("¡Bienvenido Profesor!");
+        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 33));
+        lblNewLabel.setBounds(227, 0, 322, 40);
+        panel.add(lblNewLabel);
+        
+        JCheckBox chckbxNewCheckBox = new JCheckBox("DAM");
+        chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        chckbxNewCheckBox.setBounds(39, 314, 93, 21);
+        panel.add(chckbxNewCheckBox);
+        
+        JCheckBox chckbxDaw = new JCheckBox("DAW");
+        chckbxDaw.setFont(new Font("Tahoma", Font.PLAIN, 20));
+        chckbxDaw.setBounds(39, 345, 93, 21);
+        panel.add(chckbxDaw);
+        
+        JLabel lblNewLabel_1 = new JLabel("CURSO");
+        lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 28));
+        lblNewLabel_1.setBounds(35, 260, 93, 28);
+        panel.add(lblNewLabel_1);
+        
+        JButton btnNewButton = new JButton("New button");
+        btnNewButton.setIcon(new ImageIcon(ventanaProfesor.class.getResource("/imagenes/bwhsLDu0_200x200.png")));
+        btnNewButton.setBounds(289, 30, 180, 163);
+        panel.add(btnNewButton);
+        
+        JComboBox<Object> comboBox = new JComboBox<>();
+        comboBox.setBounds(21, 389, 129, 46);
+        comboBox.addItem("SELECCIONE EL AÑO");
+        comboBox.addItem("1");
+        comboBox.addItem("2");
+        panel.add(comboBox);
+        
+ 
+    }
+
+    private void tomarNotas() {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            String alumno = (String) modelo.getValueAt(i, 0);
+            String nota = (String) modelo.getValueAt(i, 1);
+
+            System.out.println("Guardando nota: " + alumno + " - " + nota);
+        }
+        JOptionPane.showMessageDialog(this, "Notas guardadas con éxito!");
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            ventanaProfesor frame = new ventanaProfesor();
+            frame.setVisible(true);
+        });
+    }
 }
+
