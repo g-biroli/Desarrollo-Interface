@@ -27,6 +27,7 @@ public class ventanaLogeo extends JFrame implements ActionListener {
 	private JButton btnEntrar;
 	private String usuario = "Gabriel";
 	private String pass="1234";
+	private JComboBox<String> comboBox;
 	
 	
 
@@ -73,7 +74,7 @@ public class ventanaLogeo extends JFrame implements ActionListener {
 		lblCargo.setBounds(42, 231, 120, 33);
 		contentPane.add(lblCargo);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox comboBox = new JComboBox<>();
 		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		comboBox.setBounds(176, 239, 151, 21);
 		comboBox.addItem("Selecione una opcion");
@@ -126,25 +127,41 @@ public class ventanaLogeo extends JFrame implements ActionListener {
 			return passwordField;
 		} 
 	
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			Object ob = e.getSource();
-			if(ob.equals(btnSalir)) {
-				System.exit(EXIT_ON_CLOSE);
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			    Object ob = e.getSource();
+			    
+			    if (ob.equals(btnSalir)) {
+			        System.exit(EXIT_ON_CLOSE);
+			    }
+			    
+			    if (ob.equals(btnEntrar)) {
+			        String usuarioIngresado = tfUsuario.getText();
+			        String contrasenaIngresada = new String(passwordField.getPassword());
+					String tipoUsuario = comboBox.getSelectedItem().toString();
+			        
+			        if (usuarioIngresado.isEmpty() || contrasenaIngresada.isEmpty()) {
+			            JOptionPane.showMessageDialog(null, "Valores vacíos");
+			        } else {
+			            if (usuarioIngresado.equals(usuario) && contrasenaIngresada.equals(pass)) {
+			                JOptionPane.showMessageDialog(null, "Bienvenido " + usuarioIngresado);
+			                abrirVentanaSegunUsuario(tipoUsuario);
+			            } else {
+			                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
+			            }
+			        }
+			    }
 			}
-			if(ob.equals(btnEntrar)) {
-				if(tfUsuario.getText().equals("") || passwordField.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Valores vacios");
-				}
-				else {
-					if(tfUsuario.getText().equals(usuario) && passwordField.getText().equals(pass)) {
-						JOptionPane.showMessageDialog(null, "Bienvenido a la aplicación");
-						tfUsuario.setText("");
-						passwordField.setText("");
-				} else {
-					JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
-	            }
+			
+			// Método para abrir la ventana correcta
+			private void abrirVentanaSegunUsuario(String tipoUsuario) {
+			    if (tipoUsuario.equals("Profesor")) {
+			        ventanaProfesor profesorFrame = new ventanaProfesor();
+			        profesorFrame.setVisible(true);
+			    } else if (tipoUsuario.equals("Alumno")) {
+			        ventanaAlumno alumnoFrame = new ventanaAlumno();
+			        alumnoFrame.setVisible(true);
+			    }
+			    dispose(); // Cierra la ventana de login
 			}
-		}
-	}
 }
