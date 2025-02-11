@@ -12,17 +12,19 @@ public class ventanaProfesor extends JFrame {
     private JComboBox<String> comboAlumnos, comboModulos;
     private JTextField txtNota;
     private JButton btnGuardar;
+    private JLabel label_3;
+    private JButton btnNewButton;
+    private JLabel lblNewLabel;
 
     public ventanaProfesor() {
         setTitle("Gestión de Notas - Profesor");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 250);
+        setSize(646, 424);
         setLocationRelativeTo(null);
-        setLayout(new GridLayout(4, 2));
 
         // Lista de alumnos y modulos
-        comboAlumnos = new JComboBox<>(new String[]{"María", "Carlos", "Fernanda"});
-        comboModulos = new JComboBox<>(new String[]{"Desarrollo Web", "Desarrollo de Interfaces", "Programación"});
+        comboAlumnos = new JComboBox<>(new String[]{"María", "Carlos", "Fernanda", "Gabriel"});
+        comboModulos = new JComboBox<>(new String[]{"Desarrollo Web", "Desarrollo de Interfaces", "Programación", "Acesso a Datos"});
         txtNota = new JTextField();
         btnGuardar = new JButton("Guardar Nota");
 
@@ -32,14 +34,30 @@ public class ventanaProfesor extends JFrame {
                 guardarNota();
             }
         });
+        getContentPane().setLayout(new GridLayout(0, 2, 0, 0));
+        
+        btnNewButton = new JButton("");
+        btnNewButton.setIcon(new ImageIcon(ventanaProfesor.class.getResource("/imagenes/bwhsLDu0_200x200.png")));
+        getContentPane().add(btnNewButton);
+        
+        lblNewLabel = new JLabel("Bienvenido Profesor");
+        lblNewLabel.setBackground(Color.RED);
+        lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 23));
+        getContentPane().add(lblNewLabel);
 
-        add(new JLabel("Seleccionar Alumno:"));
-        add(comboAlumnos);
-        add(new JLabel("Seleccionar Módulo:"));
-        add(comboModulos);
-        add(new JLabel("Nota:"));
-        add(txtNota);
-        add(btnGuardar);
+        JLabel label = new JLabel("Seleccionar Alumno:");
+        getContentPane().add(label);
+        getContentPane().add(comboAlumnos);
+        JLabel label_1 = new JLabel("Seleccionar Módulo:");
+        getContentPane().add(label_1);
+        getContentPane().add(comboModulos);
+        JLabel label_2 = new JLabel("Nota:");
+        getContentPane().add(label_2);
+        getContentPane().add(txtNota);
+        getContentPane().add(btnGuardar);
+        
+        label_3 = new JLabel("");
+        getContentPane().add(label_3);
 
         setVisible(true);
     }
