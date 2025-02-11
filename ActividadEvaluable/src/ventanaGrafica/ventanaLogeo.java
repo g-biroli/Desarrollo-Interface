@@ -120,7 +120,7 @@ public class ventanaLogeo extends JFrame implements ActionListener {
         if (ob.equals(btnLimpiar)) {
             limpiarCampos();
         }
-
+        //LOGIN
         if (ob.equals(btnEntrar)) {
             String usuarioIngresado = tfUsuario.getText();
             String contrasenaIngresada = new String(passwordField.getPassword());
@@ -138,7 +138,7 @@ public class ventanaLogeo extends JFrame implements ActionListener {
             }
         }
     }
-
+    //btnLimpiar
     private void limpiarCampos() {
         tfUsuario.setText("");
         passwordField.setText("");
@@ -161,7 +161,7 @@ public class ventanaLogeo extends JFrame implements ActionListener {
         }
         return null;
     }
-
+    //cambio ventana
     private void abrirVentanaSegunUsuario(String tipoUsuario) {
         if (tipoUsuario.equals("Profesor")) {
             new ventanaProfesor().setVisible(true);

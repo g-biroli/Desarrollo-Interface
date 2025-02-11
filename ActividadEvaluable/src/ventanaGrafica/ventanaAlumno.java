@@ -34,7 +34,7 @@ public class ventanaAlumno extends JFrame {
         add(panel);
         setVisible(true);
     }
-
+    //Nota de acuerdo con la base datos
     private void cargarNotas() {
         try (Connection conexion = ConexionBD.conectar()) {
             String sql = "SELECT modulo, nota FROM notas WHERE alumno = ?";
@@ -49,7 +49,7 @@ public class ventanaAlumno extends JFrame {
             JOptionPane.showMessageDialog(this, "Error al cargar las notas: " + e.getMessage());
         }
     }
-
+    //ventanaAlumno
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new ventanaAlumno());
     }
