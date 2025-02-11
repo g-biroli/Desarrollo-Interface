@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import java.awt.Font;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -45,6 +47,11 @@ public class ventanaAlumno extends JFrame {
         JLabel label = new JLabel("Bienvenido Alumno");
         label.setFont(new Font("Arial", Font.BOLD, 20));
         panel.add(label);
+        
+        JButton btnNewButton = new JButton("New button");
+        btnNewButton.setIcon(new ImageIcon(ventanaProfesor.class.getResource("/imagenes/bwhsLDu0_200x200.png")));
+        btnNewButton.setBounds(289, 30, 180, 163);
+        panel.add(btnNewButton);
 
         getContentPane().add(panel);
 	}
